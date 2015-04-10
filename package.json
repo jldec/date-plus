@@ -1,0 +1,23 @@
+{
+  "name": "date-plus",
+  "version": "0.5.0",
+  "description": "Javascript dates extended with dateformat",
+  "main": "date-plus.js",
+  "license": "MIT",
+  "dependencies": {
+    "dateformat": "*"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "should": "*"
+  },
+  "scripts": {
+    "test": "mocha --ui qunit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jldec/date-plus.git"
+  },
+  "author": "jurgen leschner",
+  "license": "MIT"
+}

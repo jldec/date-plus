@@ -1,0 +1,111 @@
+# date-plus
+Javascript dates extended with [dateformat](https://www.npmjs.com/package/dateformat)
+
+- Tiny wrapper function to create dates
+- uses the built-in date parser, fixes a parser annoyance in ES5
+- returns normal Date objects extended with `.format()`, doesn't throw if the date is invalid
+- provides choice of language strings - currently `de` and `en` are provided
+
+## installation
+
+```sh
+$ npm install date-plus
+```
+
+```js
+var date = require('date-plus)
+```
+
+## usage
+
+```javascript
+var date = require(date-plus);
+
+// parse using native javascript parser
+var d = date('5/10/2015');
+
+// format
+// will not throw if date is invalid
+var output = d.format('ddd, dd mmm yyyy HH:MM:ss Z');
+
+// or use a predefined mask
+var output = d.format('expiresHeaderFormat');
+
+// set language to german
+date.lang('de')'
+```
+
+### format patterns
+
+| pattern     | interpretation                  |
+| :---------- | :------------------------------ |
+| d           | day                             |
+| dd          | day with leading 0              |
+| ddd         | day of week abbreviated         |
+| dddd        | day of week full                |
+| m           | month                           |
+| mm          | month with leading 0            |
+| mmm         | month abbreviated               |
+| mmmm        | month full                      |
+| yy          | year 2 digit                    |
+| yyyy        | year 4 digit                    |
+| h           | hours (12)                      |
+| hh          | hours (12) with leading 0       |
+| H           | hours (24)                      |
+| HH          | hours (24) with leading 0       |
+| M           | minutes                         |
+| MM          | minutes with leading 0          |
+| s           | seconds                         |
+| ss          | seconds with leading 0          |
+| l           | milliseconds 3 digits           |
+| L           | milliseconds 2 digits           |
+| t           | a or p for am or pm             |
+| tt          | am or pm                        |
+| T           | A or P for am or pm             |
+| TT          | AM or PM                        |
+| Z           | US timezone or GMT-????         |
+| o           | UTC offset e.g. +1000 or -0230  |
+| S           | day suffix e.g. 'nd' for 2      |
+| W           | week in year                    |
+| N           | day in week                     |
+| UTC:fmt     | render UTC instead of local     |
+
+### format masks
+
+| mask name             | interpretation                  |
+| :-------------------- | :------------------------------ |
+| default               | ddd mmm dd yyyy HH:MM:ss        |
+| shortDate             | m/d/yy                          |
+| mediumDate            | mmm d, yyyy                     |
+| longDate              | mmmm d, yyyy                    |
+| fullDate              | dddd, mmmm d, yyyy              |
+| shortTime             | h:MM TT                         |
+| mediumTime            | h:MM:ss TT                      |
+| longTime              | h:MM:ss TT Z                    |
+| isoDate               | yyyy-mm-dd                      |
+| isoTime               | HH:MM:ss                        |
+| isoDateTime           | yyyy-mm-dd'T'HH:MM:sso          |
+| isoUtcDateTime        | UTC:yyyy-mm-dd'T'HH:MM:ss'Z'    |
+| expiresHeaderFormat   | ddd, dd mmm yyyy HH:MM:ss Z     |
+
+
+### parsing `yyyy-mm-dd`
+
+ES5 interprets strings matching `yyyy-mm-dd` as UTC even when running in other timezones.
+
+E.g. `2015-9-15` is assumed to be midnight on that date in the local timezone
+
+But `2015-10-15` is interpreted as midnight on that date in the UTC timezone because the date uses an ISO format and has a 2-digit month.
+This is problematic e.g. for code parsing unpadded dates passed via JSON.
+
+According to [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse) and the 
+[ES6](If the time zone offset is absent, the date-time is interpreted as a local time.) draft specification:
+
+> If the time zone offset is absent, the date-time is interpreted as a local time.
+
+This module provides a small polyfill to make `yyyy-mm-dd` dates conform to this.
+
+## credits
+- depends on [dateformat](https://www.npmjs.com/package/dateformat)
+- which was based on http://blog.stevenlevithan.com/archives/date-time-format
+- inspiration https://github.com/kbaltrinic/PhantomJS-DatePolyfill
