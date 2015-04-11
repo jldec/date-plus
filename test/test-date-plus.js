@@ -72,3 +72,8 @@ test('lang de', function(){
     dfor.format('mmmm').should.be.exactly(strings.monthNames[i+12]);
   }
 });
+
+test('access dateformat masks', function(){
+  date.dateformat.masks.shortDate = ('yyyy.mm.dd');
+  date('1/1/2015').format('shortDate').should.be.exactly('2015.01.01');
+});

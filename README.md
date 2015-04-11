@@ -27,7 +27,10 @@ var output = d.format('ddd, dd mmm yyyy HH:MM:ss Z');
 var output = d.format('expiresHeaderFormat');
 
 // set language to german
-date.lang('de')'
+date.lang('de');
+
+// access dateformat masks
+date.dateformat.masks.shortDate = ('yyyy.mm.dd');
 ```
 
 ### format patterns
