@@ -12,20 +12,15 @@ Javascript dates extended with [dateformat](https://www.npmjs.com/package/datefo
 $ npm install date-plus
 ```
 
-```js
-var date = require('date-plus)
-```
-
 ## usage
 
 ```javascript
-var date = require(date-plus);
+var date = require('date-plus');
 
 // parse using native javascript parser
 var d = date('5/10/2015');
 
 // format
-// will not throw if date is invalid
 var output = d.format('ddd, dd mmm yyyy HH:MM:ss Z');
 
 // or use a predefined mask
@@ -107,5 +102,5 @@ This module provides a small polyfill to make `yyyy-mm-dd` dates conform to this
 
 ## credits
 - depends on [dateformat](https://www.npmjs.com/package/dateformat)
-- which was based on http://blog.stevenlevithan.com/archives/date-time-format
-- inspiration https://github.com/kbaltrinic/PhantomJS-DatePolyfill
+- which was based on Steven Levithan's [date-time-format](http://blog.stevenlevithan.com/archives/date-time-format)
+- additional inspiration from [PhantomJS-DatePolyfill](https://github.com/kbaltrinic/PhantomJS-DatePolyfill)
