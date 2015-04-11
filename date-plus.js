@@ -24,7 +24,7 @@ function date(s,a2,a3,a4,a5,a6,a7) {
     case 4: d = new Date(s,a2,a3,a4); break;
     case 5: d = new Date(s,a2,a3,a4,a5); break;
     case 6: d = new Date(s,a2,a3,a4,a5,a6); break;
-    case 7: d = new Date(s,a2,a3,a4,a5,a6,a7); break;
+    default: d = new Date(s,a2,a3,a4,a5,a6,a7); break;
   }
 
   d.valid = !isNaN(d);
