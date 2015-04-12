@@ -30,7 +30,7 @@ var output = d.format('expiresHeaderFormat');
 var output = date(d, fmt);
 
 // non-truthy input means current date/time
-var now = date();
+var now = date('');
 
 var d = date('inva/lid/date');
 var isValid = d.valid;          // false
