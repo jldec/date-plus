@@ -1,6 +1,6 @@
 {
   "name": "date-plus",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "description": "Javascript dates extended with dateformat",
   "main": "date-plus.js",
   "license": "MIT",
