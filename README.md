@@ -2,9 +2,10 @@
 Javascript dates extended with [dateformat](https://www.npmjs.com/package/dateformat)
 
 - Tiny wrapper function to create dates
+- returns normal Date objects extended with `.format()`
 - uses the built-in date parser, fixes a parser annoyance in ES5
-- returns normal Date objects extended with `.format()`, doesn't throw if the date is invalid
-- provides choice of language strings - currently `de` and `en` are provided
+- unlike dateformat, format() doesn't throw if the date is invalid
+- choice of language strings - currently `de` and `en` are included
 
 ## installation
 
@@ -107,7 +108,7 @@ But `2015-10-15` is interpreted as midnight on that date in the UTC timezone bec
 This is problematic e.g. for code parsing unpadded dates passed via JSON.
 
 According to [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse) and the
-[ES6](If the time zone offset is absent, the date-time is interpreted as a local time.) draft specification:
+[ES6](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-date-time-string-format) draft specification:
 
 > If the time zone offset is absent, the date-time is interpreted as a local time.
 
