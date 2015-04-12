@@ -27,11 +27,13 @@ test('now', function(){
   (date(undefined) - new Date()).should.be.below(2);
   (date() - date(false)).should.be.below(2);
   (date(0) - date(null)).should.be.below(2);
+  (date(NaN) - date(undefined)).should.be.below(2);
 })
 
 test('shortcut', function(){
   var s = date().format('isoDateTime');
   date(s).format('longDate').should.be.exactly(date(s,'longDate'));
+  date('booger', '').should.be.exactly('No Date');
 })
 
 test('ES5 UTC gotcha avoidance', function(){
@@ -52,6 +54,7 @@ test('ES5 UTC gotcha avoidance', function(){
 test('addDays', function(){
   date('4/2/2014').addDays(2).format('longDate').should.be.exactly('April 4, 2014');
   date('4/2/2014').addDays(-2).format('longDate').should.be.exactly('March 31, 2014');
+  date('4/1/2015 01:00 pm').addDays(0.5).format('m/d/yyyy hh:MM tt').should.be.exactly('4/2/2015 01:00 am');
 });
 
 test('lang de', function(){

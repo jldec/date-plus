@@ -12,10 +12,10 @@ module.exports = date;
 
 function date(s,a2,a3,a4,a5,a6,a7) {
 
+  var d;
+
   // treat - like / to prevent UTC treatment of yyyy-mm-dd strings
   if (/^\d\d\d\d-\d\d?-\d\d?$/.test(s)) { s = s.replace(/-/g,'/'); }
-
-  var d;
 
   switch (arguments.length) {
     case 7: d = new Date(s,a2,a3,a4,a5,a6,a7); break;
@@ -31,13 +31,13 @@ function date(s,a2,a3,a4,a5,a6,a7) {
 
   d.valid = !isNaN(d);
 
-  if (d.valid && arguments.length === 2 && typeof a2 === 'string') {
-    return dateformat(d,a2);
-  }
-
   d.format = function(fmt) {
     return d.valid ? dateformat(d, fmt) : dateformat.i18n.invalidDate;
   };
+
+  if (arguments.length === 2 && typeof a2 === 'string') {
+    return d.format(a2);
+  }
 
   d.addDays = function(days) {
     return date(d.valueOf() + days*24*60*60*1000);
