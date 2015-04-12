@@ -6,6 +6,7 @@
 **/
 
 var dateformat = require('dateformat');
+dateformat.i18n.invalidDate = 'No Date';
 
 module.exports = date;
 
@@ -17,28 +18,33 @@ function date(s,a2,a3,a4,a5,a6,a7) {
   var d;
 
   switch (arguments.length) {
-    case 0: d = new Date(); break;
-    case 1: d = new Date(s); break;
-    case 2: d = new Date(s,a2); break;
-    case 3: d = new Date(s,a2,a3); break;
-    case 4: d = new Date(s,a2,a3,a4); break;
-    case 5: d = new Date(s,a2,a3,a4,a5); break;
+    case 7: d = new Date(s,a2,a3,a4,a5,a6,a7); break;
     case 6: d = new Date(s,a2,a3,a4,a5,a6); break;
-    default: d = new Date(s,a2,a3,a4,a5,a6,a7);
+    case 5: d = new Date(s,a2,a3,a4,a5); break;
+    case 4: d = new Date(s,a2,a3,a4); break;
+    case 3: d = new Date(s,a2,a3); break;
+    // fall through when 2nd arg is string or 1st arg is non-truthy
+    case 2: if (typeof a2 !== 'string') { d = new Date(s,a2); break; }
+    case 1: if (s) { d = new Date(s); break; }
+    default: d = new Date();
   }
 
   d.valid = !isNaN(d);
 
-  d.isValid = function() { return d.valid; };
+  if (d.valid && arguments.length === 2 && typeof a2 === 'string') {
+    return dateformat(d,a2);
+  }
 
-  d.format = function format(fmt) {
-    return d.valid ? dateformat(d, fmt) : d.toString();
+  d.format = function(fmt) {
+    return d.valid ? dateformat(d, fmt) : dateformat.i18n.invalidDate;
   };
 
-  d.addDays = function addDays(days) {
+  d.addDays = function(days) {
     return date(d.valueOf() + days*24*60*60*1000);
   };
-  
+
+  d.inspect = function() { return d.format(); }
+
   return d;
 }
 

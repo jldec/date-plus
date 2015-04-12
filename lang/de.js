@@ -8,5 +8,6 @@ module.exports = {
   monthNames: [
     'Jan', 'Feb', 'Mrz', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez',
     'Januar', 'Februar', 'Marz', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'
-  ]
+  ],
+  invalidDate: 'Kein Datum'
 };

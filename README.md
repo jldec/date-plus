@@ -26,6 +26,16 @@ var output = d.format('ddd, dd mmm yyyy HH:MM:ss Z');
 // or use a predefined mask
 var output = d.format('expiresHeaderFormat');
 
+// shortcut for date(d).format(fmt) - 2nd arg format string
+var output = date(d, fmt);
+
+// non-truthy input means current date/time
+var now = date();
+
+var d = date('inva/lid/date');
+var isValid = d.valid;          // false
+var output = d.format();        // 'No Date'
+
 // set language to german
 date.lang('de');
 
@@ -96,7 +106,7 @@ E.g. `2015-9-15` is assumed to be midnight on that date in the local timezone
 But `2015-10-15` is interpreted as midnight on that date in the UTC timezone because the date uses an ISO format and has a 2-digit month.
 This is problematic e.g. for code parsing unpadded dates passed via JSON.
 
-According to [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse) and the 
+According to [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse) and the
 [ES6](If the time zone offset is absent, the date-time is interpreted as a local time.) draft specification:
 
 > If the time zone offset is absent, the date-time is interpreted as a local time.
