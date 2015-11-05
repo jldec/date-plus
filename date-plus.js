@@ -5,7 +5,7 @@
  * copyright 2015, Jurgen Leschner - github.com/jldec - MIT license
 **/
 
-var dateformat = require('dateformat');
+var dateformat = require('./dateformat.js');
 dateformat.i18n.invalidDate = 'No Date';
 
 module.exports = date;

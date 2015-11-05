@@ -115,6 +115,6 @@ According to [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refer
 This module provides a small polyfill to make `yyyy-mm-dd` dates conform to this.
 
 ## credits
-- depends on [dateformat](https://www.npmjs.com/package/dateformat)
+- this package includes dateformat.js from  [dateformat](https://www.npmjs.com/package/dateformat)
 - which was based on Steven Levithan's [date-time-format](http://blog.stevenlevithan.com/archives/date-time-format)
 - additional inspiration from [PhantomJS-DatePolyfill](https://github.com/kbaltrinic/PhantomJS-DatePolyfill)
