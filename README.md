@@ -1,4 +1,6 @@
 # date-plus
+[![Build Status](https://api.travis-ci.org/jldec/date-plus.svg?branch=master)](https://travis-ci.org/jldec/date-plus)
+
 Javascript dates extended with [dateformat](https://www.npmjs.com/package/dateformat)
 
 - Tiny wrapper function to create dates
