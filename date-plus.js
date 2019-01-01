@@ -18,15 +18,16 @@ function date(s,a2,a3,a4,a5,a6,a7) {
   if (/^\d\d\d\d-\d\d?-\d\d?$/.test(s)) { s = s.replace(/-/g,'/'); }
 
   switch (arguments.length) {
-    case 7: d = new Date(s,a2,a3,a4,a5,a6,a7); break;
-    case 6: d = new Date(s,a2,a3,a4,a5,a6); break;
-    case 5: d = new Date(s,a2,a3,a4,a5); break;
-    case 4: d = new Date(s,a2,a3,a4); break;
-    case 3: d = new Date(s,a2,a3); break;
-    // fall through when 2nd arg is string or 1st arg is non-truthy
-    case 2: if (typeof a2 !== 'string') { d = new Date(s,a2); break; }
-    case 1: if (s) { d = new Date(s); break; }
-    default: d = new Date();
+  case 7: d = new Date(s,a2,a3,a4,a5,a6,a7); break;
+  case 6: d = new Date(s,a2,a3,a4,a5,a6); break;
+  case 5: d = new Date(s,a2,a3,a4,a5); break;
+  case 4: d = new Date(s,a2,a3,a4); break;
+  case 3: d = new Date(s,a2,a3); break;
+  case 2: if (typeof a2 !== 'string') { d = new Date(s,a2); break; }
+  // fall through when 2nd arg is string
+  case 1: if (s) { d = new Date(s); break; }
+  // fall through when 1st arg is non-truthy
+  default: d = new Date();
   }
 
   d.valid = !isNaN(d);
@@ -43,16 +44,16 @@ function date(s,a2,a3,a4,a5,a6,a7) {
     return date(d.valueOf() + days*24*60*60*1000);
   };
 
-  d.inspect = function() { return d.format(); }
+  d.inspect = function() { return d.format(); };
 
   return d;
 }
 
 // set language globally
 date.lang = function lang(l) {
-  dateformat.i18n = require('./lang/' + l)
+  dateformat.i18n = require('./lang/' + l);
   return date;
-}
+};
 
 // access dateformat to extend masks
 date.dateformat = dateformat;

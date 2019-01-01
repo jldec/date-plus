@@ -4,7 +4,7 @@
  *
 **/
 
-var test = require('tape')
+var test = require('tape');
 
 var date = require('../date-plus.js');
 var dateformat = require('../dateformat.js');
@@ -29,14 +29,14 @@ test('now', function(t) {
   t.true(date(0) - date(null) < 2);
   t.true(date(NaN) - date(undefined) < 2);
   t.end();
-})
+});
 
 test('shortcut', function(t) {
   var s = date().format('isoDateTime');
   t.equal(date(s).format('longDate'), date(s,'longDate'));
   t.equal(date('booger', ''), 'No Date');
   t.end();
-})
+});
 
 test('ES5 UTC gotcha avoidance', function(t) {
   var d3 = date('2014-04-02');
@@ -64,7 +64,6 @@ test('addDays', function(t) {
 test('lang de', function(t) {
   date.lang('de');
   var strings = require('../lang/de');
-  var d = date('2015/01/11');
   var i, dfor;
 
   for (i=0; i<7; i++) {

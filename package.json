@@ -1,14 +1,17 @@
 {
   "name": "date-plus",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Javascript dates extended with dateformat",
   "main": "date-plus.js",
-  "dependencies": {},
+  "dependencies": {
+    "eslint": "^5.11.1"
+  },
   "devDependencies": {
-    "tape": "^4.9.0"
+    "tape": "^4.9.2"
   },
   "scripts": {
-    "test": "tape test/*.js"
+    "test": "tape test/*.js",
+    "lint": "eslint date-plus.js test"
   },
   "repository": {
     "type": "git",
