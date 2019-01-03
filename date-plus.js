@@ -2,7 +2,7 @@
  * date-plus.js
  * parses and returns native date extended with dateformat
  *
- * copyright 2015, Jurgen Leschner - github.com/jldec - MIT license
+ * copyright 2015-2019, Jurgen Leschner - github.com/jldec - MIT license
 **/
 
 var dateformat = require('./dateformat.js');
