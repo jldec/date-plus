@@ -102,19 +102,14 @@ date.dateformat.masks.shortDate = ('yyyy.mm.dd');
 
 ### parsing `yyyy-mm-dd`
 
-ES5 interprets strings matching `yyyy-mm-dd` as UTC even when running in other timezones.
+[ES5](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse#ECMAScript_5_ISO-8601_format_support) interprets strings matching `yyyy-mm-dd` as UTC even when running in other timezones.
 
 E.g. `2015-9-15` is assumed to be midnight on that date in the local timezone
 
 But `2015-10-15` is interpreted as midnight on that date in the UTC timezone because the date uses an ISO format and has a 2-digit month.
 This is problematic e.g. for code parsing unpadded dates passed via JSON.
 
-According to [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse) and the
-[ES6](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-date-time-string-format) draft specification:
-
-> If the time zone offset is absent, the date-time is interpreted as a local time.
-
-This module provides a small polyfill to make `yyyy-mm-dd` dates conform to this.
+This module provides a small polyfill to parse `yyyy-mm-dd` dates as local even in ES5.
 
 ## credits
 - this package includes dateformat.js from  [dateformat](https://www.npmjs.com/package/dateformat)
