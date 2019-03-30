@@ -8,6 +8,11 @@
     "tape": "^4.10.1",
     "eslint": "^5.16.0"
   },
+  "files": [
+    "date-plus.js",
+    "dateformat.js",
+		"lang/"
+	],
   "scripts": {
     "test": "tape test/*.js",
     "lint": "eslint date-plus.js test"
