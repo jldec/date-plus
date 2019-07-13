@@ -3,10 +3,10 @@ strategy:
     linux_node12:
       imageName: 'ubuntu-16.04'
       node_version: 12.x
-    mac_node11:
+    mac_node12:
       imageName: 'macos-10.14'
       node_version: 12.x
-    windows_node11:
+    windows_node12:
       imageName: 'windows-2019'
       node_version: 12.x
     linux_node10:
