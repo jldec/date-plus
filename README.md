@@ -1,6 +1,5 @@
 # date-plus
-[![Azure Build Status](https://dev.azure.com/jldec/date-plus/_apis/build/status/jldec.date-plus?branchName=master)](https://dev.azure.com/jldec/date-plus/_build/latest?definitionId=1&branchName=master)
-[![Travis Build Status](https://api.travis-ci.org/jldec/date-plus.svg?branch=master)](https://travis-ci.org/jldec/date-plus)
+![CI](https://github.com/jldec/date-plus/workflows/CI/badge.svg)
 
 Javascript dates extended with [dateformat](https://www.npmjs.com/package/dateformat)
 
