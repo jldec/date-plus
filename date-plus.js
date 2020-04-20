@@ -6,7 +6,7 @@
 **/
 
 var dateformat = require('./dateformat.js');
-dateformat.i18n.invalidDate = 'No Date';
+dateformat.i18n.invalidDates = [ 'No Date', 'No Date available' ];
 
 module.exports = date;
 
@@ -25,15 +25,16 @@ function date(s,a2,a3,a4,a5,a6,a7) {
   case 3: d = new Date(s,a2,a3); break;
   case 2: if (typeof a2 !== 'string') { d = new Date(s,a2); break; }
   // fall through when 2nd arg is string
-  case 1: if (s) { d = new Date(s); break; }
-  // fall through when 1st arg is non-truthy
+  case 1: if (s || (typeof s !== 'undefined' && isNaN(s))) { d = new Date(s); break; }
+  // fall through when 1st arg is empty e.g. '', 0, undefined
   default: d = new Date();
   }
 
   d.valid = !isNaN(d);
 
   d.format = function(fmt) {
-    return d.valid ? dateformat(d, fmt) : dateformat.i18n.invalidDate;
+    return d.valid ? dateformat(d, fmt) :
+      (/^longDate$|^fullDate$/.test(fmt) ? dateformat.i18n.invalidDates[1] : dateformat.i18n.invalidDates[0]);
   };
 
   if (arguments.length === 2 && typeof a2 === 'string') {

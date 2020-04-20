@@ -14,20 +14,29 @@ test('date', function(t) {
   var dd = date(nativeDate);
   t.true(dd.valid);
   t.equal(nativeDate.valueOf(), dd.valueOf());
+  t.end();
+});
 
-  var d = date('booger');
-  t.false(d.valid);
-  t.equal(d.format(),'No Date');
-  t.equal(d.format('isoDate'),'No Date');
-
+test('invalid', function(t) {
+  t.false(date('booger').valid);
+  t.false(date('NaN').valid);
+  t.false(date('45 min'-1).valid);
+  t.false(date([]).valid);
+  t.false(date({}).valid);
+  t.equal(date('booger').format(),'No Date');
+  t.equal(date('booger').format('isoDate'),'No Date');
   t.end();
 });
 
 test('now', function(t) {
-  t.true(date(undefined) - new Date() < 2);
-  t.true(date() - date(false) < 2);
-  t.true(date(0) - date(null) < 2);
-  t.true(date(NaN) - date(undefined) < 2);
+  t.true(date() - new Date() < 2);
+  t.false(date(NaN) - date() < 2);
+  t.true(isNaN(date(NaN) - date()));
+  t.true(date(undefined) - date() < 2);
+  t.true(date(null) - date() < 2);
+  t.true(date(false) - date() < 2);
+  t.true(date(0) - date() < 2);
+  t.true(date('') - date() < 2);
   t.end();
 });
 
@@ -35,6 +44,8 @@ test('shortcut', function(t) {
   var s = date().format('isoDateTime');
   t.equal(date(s).format('longDate'), date(s,'longDate'));
   t.equal(date('booger', ''), 'No Date');
+  t.equal(date('booger', 'longDate'), 'No Date available');
+  t.equal(date('booger', 'fullDate'), 'No Date available');
   t.end();
 });
 
@@ -77,6 +88,11 @@ test('lang de', function(t) {
     t.equal(dfor.format('mmm'), strings.monthNames[i]);
     t.equal(dfor.format('mmmm'), strings.monthNames[i+12]);
   }
+
+  t.equal(date('booger', ''), 'Kein Datum');
+  t.equal(date('booger', 'longDate'), 'Kein Datum vorhanden');
+  t.equal(date('booger', 'fullDate'), 'Kein Datum vorhanden');
+
   t.end();
 });
 

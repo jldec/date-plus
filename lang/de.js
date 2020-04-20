@@ -9,5 +9,5 @@ module.exports = {
     'Jan', 'Feb', 'Mrz', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez',
     'Januar', 'Februar', 'Marz', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'
   ],
-  invalidDate: 'Kein Datum'
+  invalidDates: [ 'Kein Datum', 'Kein Datum vorhanden'] // short and long formatted invalid date
 };
