@@ -5,7 +5,7 @@
   "main": "date-plus.js",
   "dependencies": {},
   "devDependencies": {
-    "tape": "^4.13.2",
+    "tape": "^5.0.0",
     "eslint": "^6.8.0"
   },
   "files": [
