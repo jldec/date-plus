@@ -19,7 +19,7 @@ test('date', function(t) {
 
 test('invalid', function(t) {
   t.false(date('booger').valid);
-  t.false(date('NaN').valid);
+  t.false(date(NaN).valid);
   t.false(date('45 min'-1).valid);
   t.false(date([]).valid);
   t.false(date({}).valid);
