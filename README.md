@@ -1,5 +1,5 @@
 # date-plus
-![CI](https://github.com/jldec/date-plus/workflows/CI/badge.svg)
+[![CI](https://github.com/jldec/date-plus/workflows/CI/badge.svg)](https://github.com/jldec/date-plus/actions)
 
 Javascript dates extended with [dateformat](https://www.npmjs.com/package/dateformat)
 
