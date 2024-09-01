@@ -1,12 +1,12 @@
 {
   "name": "date-plus",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "Javascript dates extended with dateformat",
   "main": "date-plus.js",
   "dependencies": {},
   "devDependencies": {
-    "tape": "^5.4.1",
-    "eslint": "^8.7.0"
+    "tape": "^5.8.1",
+    "eslint": "^8.57.0"
   },
   "files": [
     "date-plus.js",
